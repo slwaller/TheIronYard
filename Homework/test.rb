@@ -1,125 +1,85 @@
-first_question = {
- question: "Is Ruby an OOP language?",
- answer: true
-}
+class Car
+  @@list_of_cars = []
 
-puts first_question [:question]
-answer = gets.chomp
+  attr_accessor :model
+  attr_accessor :color
+  attr_accessor :horsepower
+  attr_accessor :year
+  attr_accessor :brand
+  attr_accessor :mpg
+  attr_accessor :cupholders
 
-if answer == first_question [:answer]
-  print "correct"
-else 
-  print "incorrect"
-end
-correct_answers = 0 
-
-ruby_quiz = [
-  {
-    question: "How many Championship\'s has Nebraska won in College Football?",
-    answer: "5",
-    answer_choices: [
-      "1",
-      "5",
-      "6",
-      "8",
-    ]
-  },
-  {
-    question: "How many Heisman Winner\'s does Nebraska have?",
-    answer:"3",
-    answer_choices: [
-      "1",
-      "2",
-      "3",
-      "4",
-    ]
-  },
-  {
-    question: "How is the current Nebraska Football coach?",
-    answer: "Bo Pelini",
-    answer_choices: [
-      "Bo Pelini",
-      "Tom Osborne",
-      "Steve Spurrier",
-      "Nick Saban",
-  ]
-},
-{
-  question: "What city is Memorial Stadium located?",
-  answer: "Lincoln",
-  answer_choices: [
-    "Omaha",
-    "Grand Island",
-    "York",
-    "Lincoln",
-  ]
-},
-{
-  question: "What team does Nebraska open their season with?",
-  answer: "Florida Atlantic",
-  answer_choices: [
-    "South Carolina",
-    "Alabama",
-    "Oregon",
-    "Florida Atlantic",
-  ]
-},
-{
-  question: "What year did Nebraska join the Big Ten Conference?",
-  answer: "2011",
-  answer_choices: [
-    "2001",
-    "2011",
-    "2005",
-    "2009",
-  ]
-},
-{
-  question: "How many All American\'s does Nebraska have?",
-  answer: "54",
-  answer_choices: [
-    "54",
-    "100",
-    "56",
-    "23",
-  ]
-},
-{
-  question: "What year was Memorial Stadium Built?",
-  answer: "1923",
-  answer_choices: [
-    "1923",
-    "1945",
-    "1950",
-    "1911",
-  ]
-},
-{
-  question: "What year did Nebraska win their first National Championship?",
-  answer: "1970",
-  answer_choices: [
-    "1971",
-    "1998",
-    "1997",
-    "1970",
-  ]
-},
-]
-
-ruby_quiz.each do | question |
-  
-  puts question [:question]
-  puts question [:answer_choices]
-  answer = gets.chomp
-
-if answer == question [:answer]
-  print "correct"
-correct_answers +=1
-else 
-  print "incorrect"
-
-
+  # Constructor
+  def initialize
+    puts "A new Car was created!"
+    self.model = nil
+    self.color = nil
+    self.horsepower = nil
+    self.year = nil
+    self.brand = nil
+    self.mpg = nil
+    self.cupholders = nil
   end
+
+  def display_data
+    p "*" * 100
+    p self.model
+    "#{self.model} #{self.color} #{self.horsepower} #{self.year} #{self.brand} #{self.mpg} #{self.cupholders}"
+  end
+
+  def self.add_car(*car_attributes)
+    car = Car.new
+    car.model = car_attributes[0]
+    car.color = car_attributes[1]
+    car.horsepower = car_attributes[2]
+    car.year = car_attributes[3]
+    car.brand = car_attributes[4]
+    car.mpg = car_attributes[5]
+    car.cupholders = car_attributes[6]
+    @@list_of_cars.push car
+    car
+  end
+
+  def self.display_cars
+    @@list_of_cars
+  end
+
+  # attr_writer :model
+  # attr_reader :model
+
+  # def model=(value)
+  #   puts "Setter being called"
+  #   @model = value
+  # end
+
+  # def model
+  #   puts "Getter being called"
+  #   @model
+  # end
 end
 
-puts "You have #{correct_answers}"
+# car = Car.new
+# car.brand = "Ferrari"
+# car.model = "La Ferrari"
+# car.year = 2014
+# car.mpg = 16.6
+# car.cupholders = true
+# car.color = "Red"
+# car.horsepower = 900
+
+# p car
+# p car.brand
+# p car.horsepower
+# p car.display_data
+
+# sams_car = Car.new
+# sams_car.model = "Mustang"
+# p sams_car.display_data
+
+# p Car.test_method
+
+# p Car.add_car("F-Type", "British Racing Green", 679, 2013, "Jaguar", 20000, false)
+# p Car.display_cars
+# p Car.add_car("Elise", "Lazer Blue", 190, 2005,"Lotus", 30, false)
+# p Car.display_cars
+# p Car.add_car("Robert - askin' the good")
