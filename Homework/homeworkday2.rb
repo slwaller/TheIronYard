@@ -1,3 +1,8 @@
+correct = 0
+
+puts "Only but in the letter A, B, or C!"
+
+
 question_1 = [
 	{
 		question: "1. What color is blue?",
@@ -16,6 +21,13 @@ puts choice
 end
 gets
 
+if question_1 = [:answer]
+	puts "Correct"
+	correct += 1
+else
+	puts "Incorrect"
+end
+
 ####################
 
 question_2 = [
@@ -27,8 +39,6 @@ question_2 = [
 			"B. 11",
 			"C. 1",
 		]
-
-
 	}
 ]
 
@@ -37,6 +47,13 @@ question_2[0][:answer_choices].each do |choice|
 puts choice
 end
 gets
+
+if question_2 = [:answer]
+	puts "Correct"
+	correct += 1
+else
+	puts "Incorrect"
+end
 
 ##########################
 
@@ -58,6 +75,13 @@ puts choice
 end
 gets
 
+if question_3 = [:answer][0]
+	puts "Correct"
+	correct += 1
+else
+	puts "Incorrect"
+end
+
 ############################
 
 question_4 = [
@@ -77,6 +101,13 @@ question_4[0][:answer_choices].each do |choice|
 puts choice
 end
 gets
+
+if question_4 = [:answer][0]
+	puts "Correct"
+	correct += 1
+else
+	puts "Incorrect"
+end
 
 #############################
 
@@ -98,6 +129,13 @@ puts choice
 end
 gets
 
+if question_5 = [:answer][0]
+	puts "Correct"
+	correct += 1
+else
+	puts "Incorrect"
+end
+
 #############################
 
 question_6 = [
@@ -111,12 +149,21 @@ question_6 = [
 			]
 }
 ]
- 
+
+
 puts question_6[0][:question]
 question_6[0][:answer_choices].each do |choice|
 puts choice
 end
 gets
+
+if question_6 = [:answer][0]
+	puts "Correct"
+	correct += 1
+else
+	puts "Incorrect"
+end
+
 
 #############################
 
@@ -138,6 +185,13 @@ puts choice
 end
 gets
 
+if question_7 = [:answer]
+	puts "Correct"
+	correct += 1
+else
+	puts "Incorrect"
+end
+
 ##############################
 
 question_8 = [
@@ -157,6 +211,13 @@ question_8[0][:answer_choices].each do |choice|
 puts choice
 end
 gets
+
+if question_7 = [:answer]
+	puts "Correct"
+	correct += 1
+else
+	puts "Incorrect"
+end
 
 ###############################
 
@@ -178,6 +239,13 @@ puts choice
 end
 gets
 
+if question_9 = [:answer]
+	puts "Correct"
+	correct += 1
+else
+	puts "Incorrect"
+end
+
 ################################
 
 question_10 = [
@@ -197,3 +265,12 @@ question_10[0][:answer_choices].each do |choice|
 puts choice
 end
 gets
+
+if question_10 = [:answer]
+	puts "Correct"
+	correct += 1
+else
+	puts "Incorrect"
+end
+
+puts "You have #{correct} right answers out of 10!"
