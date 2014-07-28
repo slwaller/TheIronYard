@@ -4,8 +4,7 @@ user_horse = gets.chomp
 puts "Oh no! #{user_horse} died right as you named it that! Meet ∞TTº, let's be safe and not name this one! Press Enter to continue!"
 user_horse.replace "∞TTº"
 gets
-
-
+puts "Press enter to race!"
 ####################################################################
 
 # @raceon = true
@@ -26,7 +25,7 @@ class Horse
 
   def display_track
     @@list_of_horses.each do |race|
-      puts "-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|"
+      puts "-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|"
       print "~" * race.position
       puts race.name
       p race.position
