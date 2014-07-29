@@ -1,0 +1,99 @@
+/*RESEARCH HOMEWORK AT THE BOTTOM!*/
+
+body{
+  overflow: scroll;
+  color: white;
+  font-size: 26;
+  background-image: url('images/bg.jpg');
+/*  background-size: cover;*/
+  background-position: top center;
+  background-repeat: repeat-y;
+}
+
+img {
+    display: block;
+    max-width: 75%;
+    max-height: 75%;
+    width: auto;
+    height: auto;
+}
+
+h1{
+  color: white;
+  font-size: 65;
+}
+
+div {
+  color: white;
+  font-size: 24px;
+  padding: 24;
+  margin-left: 10;
+  margin-right: 10;
+
+
+}
+
+div.div1 {
+  color: white;
+  font-size: 24px;
+  padding: 24;
+  margin-left: 10;
+  margin-right: 10;
+}
+
+a:link {
+COLOR: #FFFFFF;
+}
+a:visited {
+COLOR: #800080;
+}
+a:hover {
+COLOR: #FF0000;
+}
+a:active {
+COLOR: #00FF00;
+}
+}
+
+/*CSS HOMEWORK
+
+1. background-image:url('image/imagename.jpg');
+      places a background picture of your choice!
+
+2.      a:link {
+COLOR: #0000FF;
+}
+a:visited {
+COLOR: #800080;
+}
+a:hover {
+COLOR: #FF0000;
+}
+a:active {
+COLOR: #00FF00;
+}
+    CHANGES THE COLORS AND OF LINKS!
+
+3. padding
+    SETS THE AMOUNT OF PIXELS ON ALL SIDES
+
+4.
+  background-repeat: repeat; repeat-x; repeat-y: no-repeat;
+   repeat background image along x axis; y axis; or no repeat
+
+5.HTML Colors
+  white - #FFFFFF
+  black - #000000
+  blue - #0000FF
+  red - #FF0000
+
+
+
+
+
+
+
+
+
+
+      */
