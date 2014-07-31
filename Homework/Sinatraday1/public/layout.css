@@ -1,0 +1,61 @@
+div{
+  margin: 0;
+  font-size: medium;
+  font-family: sans-serif;
+  overflow: scroll;
+  color: white;
+  font-size: 26;
+  background-image: url('images/bg.jpg');
+  background-position: relative;
+  background-repeat: repeat-y;
+  border: large;
+}
+
+h2 {
+    color: white;
+    font-size: medium;
+    border: large;
+    margin: 150px;
+
+
+
+
+
+}
+
+img {
+    max-width: 75%;
+    max-height: 75%;
+    width: auto;
+    height: auto;
+}
+
+h1{
+  color: white;
+  font-size: 65;
+}
+/*
+div {
+  color: white;
+  font-size: 24px;
+  padding: 24;
+  margin-left: 10;
+  margin-right: 10;
+
+
+}*/
+
+
+a:link {
+COLOR: #FFFFFF;
+}
+a:visited {
+COLOR: #FFFFFF;
+}
+a:hover {
+COLOR: #FF0000;
+}
+a:active {
+COLOR: #00FF00;
+}
+}
