@@ -1,0 +1,11 @@
+<a href="/create_entry">Make a depressing entry..</a>
+<br>
+<% @entry.each do |entry| %>
+  <a href="/show_entry/<%= entry.id %>">
+    <%= entry.title %>
+    <%= entry.entry %>
+  </a>
+  <a href="edit_entry/<%= entry.id %>">Edit Entry</a>
+
+<br>
+<% end %>
