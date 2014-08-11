@@ -1,0 +1,22 @@
+%h1 Show Hospital
+%strong
+  Name:
+= @hospital.name
+%br
+%strong
+  Description
+= @hospital.description
+%br
+= link_to "Create Patient", new_hospital_patient_path(@hospital)
+%ul
+  /= @hospital.patient.inspect
+  - @hospital.patients.each do |patient|
+    %li
+      = link_to "#{patient.first_name} | #{patient.last_name}", hospital_patient_path(@hospital, patient)
+      |
+      = link_to "Edit", edit_hospital_patient_path(@hospital, patient)
+      |
+      = link_to "Delete", hospital_patient_path(@hospital, patient), method: :delete
+
+%br
+= link_to "Back", hospitals_path

@@ -1,0 +1,27 @@
+%p
+  %strong Name:
+  = @patient.first_name
+  = @patient.last_name
+%p
+  %strong DOB:
+  = @patient.dob
+%p
+  %strong Reason:
+  = @patient.reason
+%p
+  %strong Gender:
+  = @patient.gender
+
+%ul
+  - @patient.medications.each do |medication|
+    %li
+      = link_to "#{medication.name}", hospital_patient_medication_path(@hospital, @patient, medication)
+      |
+      = link_to "Edit", edit_hospital_patient_medication_path(@hospital, @patient, medication)
+      |
+      = link_to "Delete", hospital_patient_medication_path(@hospital, @patient, medication), method: :delete
+
+= link_to "Prescribe Medication for Patient", 
+  new_hospital_patient_medication_path(@hospital, @patient)
+
+= link_to 'Back', hospitals_path

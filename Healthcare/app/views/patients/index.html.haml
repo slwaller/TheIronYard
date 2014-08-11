@@ -1,0 +1,21 @@
+/ %h1 Show Patients
+/ %strong
+/   Name:
+/ = @patient.last_name
+/ %br
+/ %strong
+/   Description
+/ = @hospital.description
+/ %br
+/ %ul
+/   /= @hospital.patient.inspect
+/   - @hospital.patients.each do |patient|
+/     %li
+/       = link_to "#{patient.first_name} | #{patient.last_name}", hospital_patient_medication_path(@hospital, patient)
+/       |
+/       = link_to "Edit", edit_hospital_patient_medication_path(@hospital, patient)
+/       |
+/       = link_to "Delete", hospital_patient_medication_path(@hospital, patient), method: :delete
+
+/ %br
+= link_to "Back", hospitals_path

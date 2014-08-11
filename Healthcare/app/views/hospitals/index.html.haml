@@ -1,0 +1,14 @@
+%h1 The Iron Healthcare Group
+
+= link_to "Add your hospital to our group!", new_hospital_path
+%ul
+  - @hospital.each do |hospital|
+    %li
+      %strong
+        = link_to hospital.name, hospital_path(hospital)
+      = hospital.description
+      |
+      = link_to "Edit", edit_hospital_path(hospital)
+      |
+      = link_to "Delete", hospital_path(hospital), method: :delete
+= link_to "Back", root_path

@@ -1,0 +1,20 @@
+%h1 Show Patient
+
+%strong
+  Description
+= @hospital.description
+%br
+
+%strong
+  Name:
+= @patient.first_name
+= @patient.last_name
+  Gender:
+= @patient.gender
+  Reason:
+= @patient.reason
+  DOB:
+= @patient.dob
+
+
+= link_to 'Back', hospitals_path

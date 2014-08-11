@@ -1,0 +1,11 @@
+%ul
+  - @medication.each do |medication|
+    %li
+      %strong
+      = link_to medication.name, hospital_patient_medication_path(medication)
+      |
+      = link_to "Edit", edit_hospital_patient_medication(medication)
+      |
+      = link_to "Delete", hospital_patient_medication_path(medication), method: :delete
+
+= link_to "Back", hospitals_path

@@ -1,0 +1,10 @@
+<h1>Favorite Games</h2>
+
+<%= link_to "Add New Game", new_game_path %>
+<br>
+<% @games.each do |game| %>
+  <%= link_to game.name, game_path(game) %>
+  <%= link_to "Edit", edit_game_path(game) %>
+  <%= link_to "Delete", game_path(game), method: :delete %>
+  <br>
+<% end %>
