@@ -1,0 +1,36 @@
+<%= form_for @patient do |f| %>
+  <% if f.object.errors.messages.length > 0 %>
+    <!-- Render the errors to the user -->
+    <% f.object.errors.messages.inspect %> 
+    <br>
+    <% f.object.errors.messages.each do |key, value| %>
+      <% value.each do |message| %>
+        <%= key.capitalize %> <%= message %>
+        <br>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %>
+  <br>
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %>
+  <br>
+  <%= f.label :dob %>
+  <%= f.date_select :dob,
+        :start_year => Date.today.year - 120,
+        :order => [:day, :month, :year] %>
+  <br>
+  <%= f.label :reason %>
+  <br>
+  <%= f.text_area :reason, :cols => "30", :rows => "10" %>
+  <br>
+  <%= f.label :gender %>
+  <%= f.radio_button :gender, 'Male', :checked => true %> 
+  <%= label :male, 'Male' %>
+  <%= f.radio_button :gender, 'Female' %>
+  <%= label :gender, 'Female' %>
+  <br>
+  <%= f.submit %>
+<% end %>
