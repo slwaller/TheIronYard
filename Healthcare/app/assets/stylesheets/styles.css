@@ -1,12 +1,52 @@
-%body {
-  color: blue;
+body {
 
-
+background-color: #D8D8D8;
+margin-left: 200px;
+margin-right: 200px;
+text-align: left;
+border-bottom-color: #585858;
+border-left-color: #585858;
+border-right-color: #2E2E2E;
+border-top-color: #2E2E2E;
+border-bottom-width: thick;
+border-left-width: thick;
+border-right-width: thick;
+border-top-width: thick;
+border-top-style: outset;
+border-right-style: outset;
+border-bottom-style: outset;
+border-left-style: outset;
+border-collapse: separate;
 
 
 
 }
 
-%ul {
-  color: blue;
+h1 {
+
+background-color: #E6E6E6;
+list-style-type: none;
+border-bottom-color: #585858;
+/*border-left-color: #585858;
+border-right-color: #2E2E2E;*/
+border-top-color: #2E2E2E;
+border-top-style: outset;
+border-right-style: outset;
+border-bottom-style: outset;
+border-left-style: outset;
+border-collapse: separate;
+
+
+
+}
+
+ul {
+
+background-color: #E6E6E6;
+list-style-type: none;
+border-top-style: inset;
+border-right-style: inset;
+border-bottom-style: inset;
+border-left-style: inset;
+border-collapse: separate;
 }
