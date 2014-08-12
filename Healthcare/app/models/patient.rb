@@ -2,6 +2,7 @@ class Patient < ActiveRecord::Base
 
   belongs_to :hospital
   has_many :medications
+  has_many :doctors, as: :treatable
 
   validates :first_name, presence: true
   validates :last_name, presence: true

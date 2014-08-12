@@ -12,6 +12,7 @@ class PatientsController < ApplicationController
   def show
     @hospital = Hospital.find params[:hospital_id]
     @patient = Patient.find params[:id]
+    @doctor = @patient.doctors.new
   end
 
   def new
@@ -52,38 +53,54 @@ class PatientsController < ApplicationController
   def discharge
     @hospital = Hospital.find params[:hospital_id]
     @patient.discharge!
-    redirect_to hospitals_path
+    redirect_to hospital_patient_path
   end
 
   def check
     @hospital = Hospital.find params[:hospital_id]
     @patient.check!
-    redirect_to hospitals_path
+    redirect_to hospital_patient_path
   end
 
   def wait
     @hospital = Hospital.find params[:hospital_id]
     @patient.wait!
-    redirect_to hospitals_path
+    redirect_to hospital_patient_path
   end
 
   def xray
     @hospital = Hospital.find params[:hospital_id]
     @patient.xray!
-    redirect_to hospitals_path
+    redirect_to hospital_patient_path
   end
 
   def scalpel
     @hospital = Hospital.find params[:hospital_id]
     @patient.scalpel!
-    redirect_to hospitals_path
+    redirect_to hospital_patient_path
   end
 
   def charge
     @hospital = Hospital.find params[:hospital_id]
     @patient.charge!
-    redirect_to hospitals_path
+    redirect_to hospital_patient_path
   end
+
+  def create_doctor
+    @hospital = Hospital.find params[:hospital_id]
+    @patient = @hospital.patients.find params[:id]
+    @doctor = @patient.doctors.create doctor_params
+    redirect_to hospital_patient_path(@hospital, @patient)
+  end
+
+  def delete_doctor
+    @hospital = Hospital.find params[:hospital_id]
+    @patient = @hospital.patients.find params[:id]
+    @doctor = @patient.doctors.find params[:doctor_id]
+    @doctor.delete
+    redirect_to hospital_patient_path(@hospital, @patient)
+  end
+    
 
   private
 
@@ -93,6 +110,10 @@ class PatientsController < ApplicationController
 
   def patient_params
     params.require(:patient).permit(:first_name, :last_name, :dob, :reason, :gender)
+  end
+
+  def doctor_params
+      params.require(:doctor).permit(:dr_name)
   end
 
 end

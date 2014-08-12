@@ -8,6 +8,9 @@
 = @hospital.description
 %br
 = link_to "Create Patient", new_hospital_patient_path(@hospital)
+%br
+%br
+Patients
 %ul
   /= @hospital.patient.inspect
   - @hospital.patients.each do |patient|
@@ -17,6 +20,22 @@
       = link_to "Edit", edit_hospital_patient_path(@hospital, patient)
       |
       = link_to "Delete", hospital_patient_path(@hospital, patient), method: :delete
+%br
+%br
+Doctors
+%ul
+  - @hospital.doctors.each do |doctor|
+    - if doctor.dr_name
+      %li
+        = doctor.dr_name
+        = link_to "|Delete Doctor|", delete_doctor_hospital_path(@hospital, doctor_id: doctor.id), method: :delete
+
+= form_for @doctor, url: create_doctor_hospital_path(@hospital) do |f|
+  = f.label :dr_name, "Add Doctor to Hospital"
+  = f.text_field :dr_name
+  %br
+  = f.submit
 
 %br
+
 = link_to "Back", hospitals_path

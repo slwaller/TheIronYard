@@ -11,6 +11,61 @@
 %p
   %strong Gender:
   = @patient.gender
+%br
+  _________________________
+%br
+  = @patient.workflow_state
+%br
+  _________________________
+%br
+  / = link_to @patient.first_name, hospital_patient_path(@hospital, @patient)
+  / |
+  / = link_to "Edit", edit_hospital_patient_medication_path(@hospital, @patient)
+  / |
+  / = link_to "Delete", hospital_patient_medication_path(@hospital, @patient), method: :delete
+  / = link_to "Back", hospital_patients_path
+
+.workflow_state
+  - if @patient.workflow_state != "Leaving"
+    = link_to "Waiting |", wait_hospital_patient_path(@hospital, @patient), method: :put
+
+    = link_to "Xray |", xray_hospital_patient_path(@hospital, @patient), method: :put
+
+    = link_to "Checkup |", check_hospital_patient_path(@hospital, @patient), method: :put
+
+    = link_to "Surgery |", scalpel_hospital_patient_path(@hospital, @patient), method: :put
+
+    = link_to "Pay Your Bill |", charge_hospital_patient_path(@hospital, @patient), method: :put
+
+    = link_to "Leaving |", discharge_hospital_patient_path(@hospital, @patient), method: :put
+
+  / - if !['Xray', 'Surgery', 'Pay Bills' 'Waiting'].include?(patient.workflow_state)
+  /   = link_to "Doctor Checkup!", check_patient_path(@patient), method: :put
+  / - if !['Doctor Checkup', 'Surgery', 'Pay Bills' 'Waiting'].include?(patient.workflow_state)
+  /   = link_to "Xray!", xray_patient_path(patient), method: :put
+  / - if !['Xray', 'Doctor Checkup', 'Pay Bills' 'Waiting'].include?(patient.workflow_state)
+  /   = link_to "Surgery!", scalpel_patient_path(patient), method: :put
+  / - if !['Leaving'].include?(patient.workflow_state)
+  /   = link_to "Pay Bills!", charge_patient_path(patient), method: :put
+
+%ul
+  - @patient.doctors.each do |doctor|
+    - if doctor.dr_name
+      %li
+        = doctor.dr_name
+        = link_to "[Delete]", delete_doctor_hospital_patient_path(@hospital, @patient, doctor_id: doctor.id), method: :delete
+
+= form_for @doctor, url: create_doctor_hospital_patient_path(@hospital, @patient) do |f|
+  = f.label :dr_name, "Assign Doctor to Patient"
+  = f.text_field :dr_name
+  %br
+  = f.submit
+%br
+___________________________
+%br
+= link_to "Prescribe Medication for Patient", 
+  new_hospital_patient_medication_path(@hospital, @patient)
+%br
 
 %ul
   - @patient.medications.each do |medication|
@@ -21,7 +76,6 @@
       |
       = link_to "Delete", hospital_patient_medication_path(@hospital, @patient, medication), method: :delete
 
-= link_to "Prescribe Medication for Patient", 
-  new_hospital_patient_medication_path(@hospital, @patient)
 
+%br
 = link_to 'Back', hospitals_path

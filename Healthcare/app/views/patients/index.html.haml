@@ -1,21 +1,31 @@
-/ %h1 Show Patients
-/ %strong
-/   Name:
-/ = @patient.last_name
-/ %br
-/ %strong
-/   Description
-/ = @hospital.description
-/ %br
-/ %ul
-/   /= @hospital.patient.inspect
-/   - @hospital.patients.each do |patient|
-/     %li
-/       = link_to "#{patient.first_name} | #{patient.last_name}", hospital_patient_medication_path(@hospital, patient)
-/       |
-/       = link_to "Edit", edit_hospital_patient_medication_path(@hospital, patient)
-/       |
-/       = link_to "Delete", hospital_patient_medication_path(@hospital, patient), method: :delete
+
+- @patients.each do |patient|
+  %li
+    = patient.workflow_state
+    = patient.first_name
+    = patient.last_name
+    = link_to patient.first_name, hospital_patient_path(@hospital, patient)
+    |
+    = link_to "Edit", edit_hospital_patient_medication_path(@hospital, patient)
+    |
+    = link_to "Delete", hospital_patient_medication_path(@hospital, patient), method:delete
+  = link_to "Back", hospital_patients_path
+
+.workflow_state
+  - if patient.workflow_state != "Leaving"
+    = link_to "Waiting |", wait_hospital_patient_medication_path(@hospital, patient), method: :put
+    = link_to "Xray |", xray_hospital_patient_medication_path(@hospital, patient), method: :put
+    = link_to "Checkup |", check_hospital_patient_medication_path(patient), method: :put
+    = link_to "Surgery |", scalpel_hospital_patient_medication_path(@hospital, patient), method: :put
+    = link_to "Leaving |", discharge_hospital_patient_medication_path(@hospital, patient), method: :put
+- if !['Xray', 'Surgery', 'Pay Bills' 'Waiting'].include?(patient.workflow_state)
+  = link_to "Doctor Checkup!", check_patient_path(patient), method: :put
+- if !['Doctor Checkup', 'Surgery', 'Pay Bills' 'Waiting'].include?(patient.workflow_state)
+  = link_to "Xray!", xray_patient_path(patient), method: :put
+- if !['Xray', 'Doctor Checkup', 'Pay Bills' 'Waiting'].include?(patient.workflow_state)
+  = link_to "Surgery!", scalpel_patient_path(patient), method: :put
+- if !['Leaving'].include?(patient.workflow_state)
+  = link_to "Pay Bills!", charge_patient_path(patient), method: :put
 
 / %br
 = link_to "Back", hospitals_path

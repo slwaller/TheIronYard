@@ -8,9 +8,18 @@ root 'home#index'
 
 
 resources :hospitals do
+  
+  member do
+    post :create_doctor
+    delete :delete_doctor
+  end
+
+
   resources :patients do
-    resources :medications do
+    
       member do
+        post :create_doctor
+        delete :delete_doctor
         put :wait
         put :check
         put :xray
@@ -18,7 +27,9 @@ resources :hospitals do
         put :charge
         put :discharge
       end
-    end
+      
+      resources :medications
+
   end
 end
 
