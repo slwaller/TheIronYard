@@ -1,5 +1,5 @@
 class HospitalsController < ApplicationController
-
+  before_action :authenticate_user!, only: [:show, :new, :edit, :update, :destroy]
   def index
     @hospital = Hospital.all
   end

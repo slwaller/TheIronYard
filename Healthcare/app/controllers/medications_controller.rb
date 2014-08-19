@@ -1,7 +1,5 @@
 class MedicationsController < ApplicationController
- #patient -> medication
- #hospital -> patient
-
+  before_action :authenticate_user!
   def index
     @medications = Medication.all
     @patient = Patient.find params[:patient_id]
