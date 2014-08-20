@@ -1,7 +1,8 @@
 %h1 The Iron Healthcare Group
 
-= link_to "Add your hospital to our group!", new_hospital_path
-%ul
+
+= button_to "Add your hospital to our group!", new_hospital_path, class: "hosp_link", method: :get
+%ul.hospital_list
   - @hospital.each do |hospital|
     %li
       %strong

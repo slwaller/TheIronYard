@@ -22,10 +22,12 @@ class MedicationsController < ApplicationController
     @patient = Patient.find params[:patient_id]
 
     @medication = @patient.medications.new(medication_params)
-    if @medication.save == true
-      redirect_to hospital_patient_path(@hospital, @patient)
-    else
-      render :new
+      respond_to do |format|
+      if @medication.save
+        format.html { redirect_to hospital_patient_path(@hospital, @patient), notice: 'Medication successfully prescribed!' }
+      else
+        format.html { render :new }
+      end
     end
   end
 

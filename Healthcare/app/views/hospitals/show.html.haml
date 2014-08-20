@@ -7,20 +7,27 @@
   Description
 = @hospital.description
 %br
-= link_to "Check In Patient to this Hospital", new_hospital_patient_path(@hospital)
+= button_to "Check In Patient to this Hospital", new_hospital_patient_path(@hospital), method: :get
 %br
 %br
 %strong
   Patients
-%ul
+%ul.patient_list
   /= @hospital.patient.inspect
-  - @hospital.patients.each do |patient|
-    %li
-      = link_to "#{patient.first_name} #{patient.last_name}", hospital_patient_path(@hospital, patient)
-      |
-      = link_to "Edit", edit_hospital_patient_path(@hospital, patient)
-      |
-      = link_to "Delete", hospital_patient_path(@hospital, patient), method: :delete
+
+- group_id = 0
+- @hospital.patients.each_slice(10) do |patient_group|
+  - group_id += 1
+  - patient_group.each do |patient|
+    %p{ class: "slice group_#{group_id} #{'hidden' if group_id > 1}" }
+    = link_to "#{patient.first_name} #{patient.last_name}", hospital_patient_path(@hospital, patient)
+    |
+    = link_to "Edit", edit_hospital_patient_path(@hospital, patient)
+    |
+    = link_to "Delete", hospital_patient_path(@hospital, patient), method: :delete
+%br
+%br
+%br
 %br
 = form_for @doctor, url: create_doctor_hospital_path(@hospital) do |f|
   = f.label :dr_name, "Add Doctor to Hospital"
@@ -30,7 +37,7 @@
 %br
 %strong
   Doctors
-%ul
+%ul.doctor_list
   - @hospital.doctors.each do |doctor|
     - if doctor.dr_name
       %li
@@ -41,4 +48,4 @@
 
 %br
 
-= link_to "Back", hospitals_path
+= link_to "Back", hospitals_path, method: :get

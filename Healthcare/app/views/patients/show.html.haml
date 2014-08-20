@@ -63,8 +63,8 @@
 %br
 ___________________________
 %br
-= link_to "Prescribe Medication for Patient", 
-  new_hospital_patient_medication_path(@hospital, @patient)
+= button_to "Prescribe Medication for Patient",
+  new_hospital_patient_medication_path(@hospital, @patient), method: :get
 %br
 
 %ul

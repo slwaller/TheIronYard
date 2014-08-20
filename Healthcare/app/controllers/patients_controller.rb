@@ -3,13 +3,14 @@ class PatientsController < ApplicationController
   before_action :find_patient, only: 
          [:show, :edit, :update, :destroy, :discharge, :wait,
           :check, :xray, :scalpel, :charge]
-
+# .page(params[:page]).per(10)
   def index
     @patients = Patient.all
     @hospital = Hospital.find params[:hospital_id]
   end
 
   def show
+    @patients = Patient.all.page(params[:page]).per(10)
     @hospital = Hospital.find params[:hospital_id]
     @patient = Patient.find params[:id]
     @doctor = @patient.doctors.new
@@ -24,11 +25,13 @@ class PatientsController < ApplicationController
     @hospital = Hospital.find params[:hospital_id]
 
     @patient = @hospital.patients.new(patient_params)
-    if @patient.save == true
-      redirect_to hospitals_path
-    else
-      render :new
-    end
+      respond_to do |format|
+        if @patient.save
+          format.html { redirect_to hospital_path(@hospital), notice: 'Patient Successfully Checked In!' }
+        else
+          format.html { render :new }
+        end
+      end
   end
 
   def edit

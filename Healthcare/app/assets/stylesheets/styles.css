@@ -50,3 +50,31 @@ border-bottom-style: inset;
 border-left-style: inset;
 border-collapse: separate;
 }
+
+.notice{
+
+font-size: larger;
+font-weight: thick;
+color: red;
+border-bottom-color: #fff;
+border-left-color: #ffffff;
+border-right-color: #fff;
+border-top-color: #fff;
+border-bottom-width: thick;
+border-left-width: thick;
+border-right-width: thick;
+border-top-width: thick;
+border-top-style: inset;
+border-right-style: inset;
+border-bottom-style: inset;
+border-left-style: inset; 
+
+
+
+
+
+
+
+
+
+}

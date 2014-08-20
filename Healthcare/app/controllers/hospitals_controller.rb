@@ -1,5 +1,6 @@
 class HospitalsController < ApplicationController
   before_action :authenticate_user!, only: [:show, :new, :edit, :update, :destroy]
+# .scoped.page(params[:page]).per(5)
   def index
     @hospital = Hospital.all
   end
@@ -15,7 +16,13 @@ class HospitalsController < ApplicationController
 
   def create
     @hospital = Hospital.create hospital_params
-    redirect_to hospitals_path
+    respond_to do |format|
+      if @hospital.save
+        format.html { redirect_to @hospital, notice: 'Hospital was successfully added!' }
+      else
+        format.html { render :new }
+      end
+    end
   end
 
   def edit
