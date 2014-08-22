@@ -1,6 +1,7 @@
 class HospitalsController < ApplicationController
   before_action :authenticate_user!, only: [:show, :new, :edit, :update, :destroy]
 # .scoped.page(params[:page]).per(5)
+
   def index
     @hospital = Hospital.all
   end

@@ -44,10 +44,10 @@ ul {
 
 background-color: #E6E6E6;
 list-style-type: none;
-border-top-style: inset;
+/*border-top-style: inset;
 border-right-style: inset;
 border-bottom-style: inset;
-border-left-style: inset;
+border-left-style: inset;*/
 border-collapse: separate;
 }
 
@@ -69,11 +69,10 @@ border-right-style: inset;
 border-bottom-style: inset;
 border-left-style: inset; 
 
+}
 
-
-
-
-
+.hidden {
+ display: none;
 
 
 

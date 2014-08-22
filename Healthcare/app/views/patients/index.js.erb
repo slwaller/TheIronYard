@@ -1,0 +1,3 @@
+<% @patients.each do |patient| %>
+  $("ul.patients").append("<%= escape_javescript(render('patients/patient_partial', patient: patient )) %>")
+<% end %>

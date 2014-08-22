@@ -1,8 +1,53 @@
-$ ->(document).ready(function() {
+$(document).ready(function() {
 
 $(".notice").fadeOut(2000);
 
-$(".notice").fadeOut( function() {
+$(".notice").on( function() {
     $(".notice").fadeOut(2000);
 })
+
+$("form > input").keyup( function() {
+    if ($(this).val() == "") {
+      $(".submit_btn").attr("disabled", "disabled")}
+    else{
+      $(".submit_btn").removeAttr("disabled")
+    }
+})
+
+$(".page_num").click( function() {
 }
+
+$("li").click( function() {
+    $(this).remove()
+})
+
+$(".get_patients").click( function() {
+  $.ajax({
+    url: "/hospitals/ajax/patients",
+    type: "GET",
+    dataType: "script"
+  })
+})
+
+
+
+$(".search_patients").click( function() {
+  console.log($('.patient_search').val())
+  $.ajax({
+    url: "/patients",
+    dataType: "script",
+    type: "GET",
+    data: {q: $('.patient_search').val()}
+  })
+})
+
+$(".page_num").click(function() {
+    var page_num = $(this).html()
+    console.log(page_num)
+    $(".patient_page").addClass("hidden")
+    $(".group_" + page_num).removeClass("hidden")
+})
+
+
+
+})

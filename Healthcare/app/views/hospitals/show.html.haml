@@ -9,31 +9,39 @@
 %br
 = button_to "Check In Patient to this Hospital", new_hospital_patient_path(@hospital), method: :get
 %br
+%ul.patients
+%br
+= text_field_tag '', '', class: "patient_search"
+= button_to "Search patients", 'javascript:void(0);', class: "search_patients", method: :get
+%br
+%ul.search_list
 %br
 %strong
   Patients
 %ul.patient_list
   /= @hospital.patient.inspect
 
-- group_id = 0
-- @hospital.patients.each_slice(10) do |patient_group|
-  - group_id += 1
+- group_of_patients = 0
+- Patient.all.each_slice(10) do |patient_group|
+  - group_of_patients += 1
   - patient_group.each do |patient|
-    %p{ class: "slice group_#{group_id} #{'hidden' if group_id > 1}" }
-    = link_to "#{patient.first_name} #{patient.last_name}", hospital_patient_path(@hospital, patient)
-    |
-    = link_to "Edit", edit_hospital_patient_path(@hospital, patient)
-    |
-    = link_to "Delete", hospital_patient_path(@hospital, patient), method: :delete
+    %li{class: "group_#{group_of_patients} #{'hidden' if group_of_patients >= 2} patient_page" }
+      = link_to "#{patient.first_name} #{patient.last_name}", hospital_patient_path(@hospital, patient)
+      |
+      = link_to "Edit", edit_hospital_patient_path(@hospital, patient)
+      |
+      = link_to "Delete", hospital_patient_path(@hospital, patient), method: :delete
 %br
+- group_of_patients.times do |x|
+  |
+  = link_to x + 1, "javascript:void(0);", class: "page_num"
 %br
-%br
-%br
+
 = form_for @doctor, url: create_doctor_hospital_path(@hospital) do |f|
   = f.label :dr_name, "Add Doctor to Hospital"
   = f.text_field :dr_name
   %br
-  = f.submit
+  = f.submit "Submit", class: "submit_btn", disabled: 'disabled'
 %br
 %strong
   Doctors

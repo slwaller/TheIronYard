@@ -3,10 +3,23 @@ class PatientsController < ApplicationController
   before_action :find_patient, only: 
          [:show, :edit, :update, :destroy, :discharge, :wait,
           :check, :xray, :scalpel, :charge]
+
 # .page(params[:page]).per(10)
+  def search_patients
+    @patients = Patient.where("last_name LIKE ?", "%#{params[:q]}%")
+    respond_to do |format|
+      format.js
+    end
+  end
+
+
   def index
     @patients = Patient.all
-    @hospital = Hospital.find params[:hospital_id]
+    @hospital = Hospital.find params[:hospital_id] if params [:hospital_id] != 'search'
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
