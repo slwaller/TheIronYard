@@ -1,0 +1,28 @@
+%center
+  %h1
+    = @submission.workflow_state
+    %h2
+    - if current_user.admin?
+      .workflow_state
+        - if @submission.workflow_state != "Complete"
+          = link_to "Review", review_assignment_submission_path(@assignment, @submission), method: :put
+
+        - if !['Done', 'Complete'].include?(@submission.workflow_state)
+          = link_to "Undone", undone_assignment_submission_path(@assignment, @submission), method: :put
+
+        - if !['Undone', 'Complete'].include?(@submission.workflow_state)
+          = link_to "Done", done_assignment_submission_path(@assignment, @submission), method: :put
+
+%center
+  %ul
+  - @submission.comments.each do |comment|
+    - if comment.content
+      %li
+        = comment.content
+        = link_to "[Delete]", delete_comment_assignment_submission_path(@assignment, @submission, comment_id: comment.id), method: :delete
+  = form_for @comment, url: create_comment_assignment_submission_path(@assignment, @submission) do |f|
+    = f.label :content
+    %br
+    = f.text_area :content, :cols => "50", :rows => "10"
+    %br
+    = f.submit

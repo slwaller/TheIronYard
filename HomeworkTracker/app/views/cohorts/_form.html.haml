@@ -1,0 +1,13 @@
+= form_for [@location, @cohort] do |f|
+  - if @cohort.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@cohort.errors.count, "error")} prohibited this cohort from being saved:"
+      %ul
+        - @cohort.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :course
+    = f.text_field :course, class: "form-control", placeholder: "Please fill out the course name"
+  .form-group    
+    = f.submit 'Save'

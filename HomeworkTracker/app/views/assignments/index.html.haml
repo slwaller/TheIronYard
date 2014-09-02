@@ -1,0 +1,14 @@
+%center
+  %h1.assignments Our assignments
+  = button_to "Add assignment", new_assignment_path, method: :get, class: "addassignment"
+  %br
+    - @assignments.each do |assignment|
+      %li
+        %strong
+          = link_to assignment.name, assignment_path(assignment)
+          = assignment.description
+          |
+          = link_to "Edit", edit_assignment_path(assignment)
+          |
+          = link_to "Delete", assignment_path(assignment), method: :delete
+  = button_to "Home", root_path, method: :get

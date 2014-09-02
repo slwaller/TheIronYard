@@ -1,0 +1,16 @@
+= form_for [@assignment, @submission] do |f|
+  - if @submission.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@submission.errors.count, "error")} prohibited this submission from being saved:"
+      %ul
+        - @submission.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: "form-control", placeholder: "Fill out the name of the submitter"
+  .form-group
+    = f.label :links
+    = f.text_field :links, class: "form-control", placeholder: "Provide links for your submissions"
+  .form-group  
+    = f.submit 'Save'

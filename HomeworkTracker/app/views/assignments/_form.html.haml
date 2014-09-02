@@ -1,0 +1,10 @@
+= form_for @assignment do |f|
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: "form-control", placeholder: "Subject of your assignment"
+  .form-group
+    = f.label :description
+    = f.text_area :description, :cols => "30", :rows => "10", class: "form-control", placeholder: "Write up a description of the assignment"
+    %br
+  %center
+    = f.submit 'Submit'

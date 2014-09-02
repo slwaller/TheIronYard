@@ -1,0 +1,14 @@
+%center
+  %h1.locations Our Locations
+  = button_to "Add Location", new_location_path, method: :get, class: "addlocation"
+  %br
+    - @locations.each do |location|
+      %li
+        %strong
+          = link_to location.city, location_path(location)
+          = location.description
+          |
+          = link_to "Edit", edit_location_path(location)
+          |
+          = link_to "Delete", location_path(location), method: :delete
+  = button_to "Home", root_path, method: :get

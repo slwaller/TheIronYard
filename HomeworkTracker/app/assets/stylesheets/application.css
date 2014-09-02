@@ -1,0 +1,103 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require bootstrap
+ *= require_tree .
+ *= require_self
+ */
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+/*.locations{
+height: 250px;
+width: 350px;
+vertical-align: center;
+margin: 15px;
+box-shadow: 3px 3px 5px 6px #000;
+background-color: #470812;
+opacity: .7;
+color: white;*/
+}
+.loginbutton {
+  margin-right: 5px;
+  color: white;
+  vertical-align: middle;
+}
+
+.button {
+margin-left: 100px;
+margin-right: 100px;
+}
+
+p.notice {
+text-align: center;
+font-size: 30px;
+color: #eee;
+}
+
+p.alert{
+font-size: 30px;
+text-align: center;
+color: #eee;
+}
+
+h1.locations{
+text-align: center;
+}
+
+ul{
+  list-style-type: none;
+}
+
+li{
+  list-style-type: none;
+
+}
+
+.form-group{
+
+  margin-left: 400px;
+  margin-right: 400px;
+}
+
+ul.cohort_list{
+  margin-left: 0px
+
+}
+
+ul.locations{
+
+  text-align: center;
+  list-style-type: none;
+}
+
+a.btn.btn-default{
+color: black;
+}
+
+a:link {
+    color: #fff;
+}
+
+a:visited {
+    color: #fff;
+}
+
+a:hover {
+    color: blue;
+}
+
+a:active {
+    color: #0000FF;
+}

@@ -1,0 +1,39 @@
+!!!
+%html
+  %head
+    %title PostHut
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  %body
+  %body
+    .navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
+      .container
+        .navbar-header
+          %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+        .row.buttons
+          .col-md-6
+            %a.navbar-brand{:href => root_path} PostHut
+            %a.navbar-brand{:href => locations_path} Our Locations
+          .pull-right
+            = user_login_links
+    %p.notice= notice if notice
+    %p.alert= alert if alert
+    = yield
+    %hr/
+    %footer
+      %p © PostHut 2014
+    / /container
+    /
+      Bootstrap core JavaScript
+      \==================================================
+    / Placed at the end of the document so the pages load faster
+    %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"}
+    %script{:src => "../../dist/js/bootstrap.min.js"}
+  %p.notice= notice if notice
+  %p.alert= alert if alert
+

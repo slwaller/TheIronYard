@@ -1,5 +1,6 @@
 class MedicationsController < ApplicationController
   before_action :authenticate_user!
+  
   def index
     @medications = Medication.all
     @patient = Patient.find params[:patient_id]
@@ -20,7 +21,6 @@ class MedicationsController < ApplicationController
   def create
     @hospital = Hospital.find params[:hospital_id]
     @patient = Patient.find params[:patient_id]
-
     @medication = @patient.medications.new(medication_params)
       respond_to do |format|
       if @medication.save

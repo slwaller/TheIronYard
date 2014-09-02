@@ -1,0 +1,67 @@
+.jumbotron{
+color: white;
+background-color: #222;
+/*background-color: #470812;
+background-image: url(http://www.transparenttextures.com/patterns/dark-wood.png);*/
+box-shadow: inset 0 0 10px #000000;
+opacity: .8;
+text-align: center;
+}
+
+body {
+background-color: #C9CEB9;
+background-image: url(http://www.transparenttextures.com/patterns/dark-wood.png);
+
+
+
+}
+
+p.title{
+
+/*margin-right: 100px;
+margin-left: 100px;*/
+
+}  
+
+h1.title {
+  text-align: center;
+  text-shadow: 1px 1px 4px black, 0 0 0.2em #C9CEB9;
+  color: white;
+
+
+
+}
+
+h2{
+text-align: center;
+}
+
+.col-md-3 {
+height: 250px;
+width: 350px;
+vertical-align: center;
+/*margin: 15px;*/
+box-shadow: 3px 3px 5px 6px #000;
+background-color: #470812;
+opacity: .7;
+color: white;
+
+
+}
+
+a.navbar-brand{
+color: white;
+}
+
+.col-md-6{
+
+vertical-align: center;
+
+}
+
+.row {
+
+vertical-align: center;
+
+
+}

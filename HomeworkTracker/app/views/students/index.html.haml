@@ -1,0 +1,14 @@
+%center
+  %h1.students Student List
+  = button_to "Add Student", new_location_cohort_student_path, method: :get, class: "addstudent"
+  %br
+  %br
+    - @cohort.students.each do |student|
+      %li
+        %strong
+          = link_to "#{student.first_name} - #{student.last_name}", location_cohort_student_path(@location, @cohort, student)
+          |
+          = link_to "Edit", edit_location_cohort_student_path(@location, @cohort, student)
+          |
+          = link_to "Delete", location_cohort_student_path(@location, @cohort, student), method: :delete
+  = link_to "Home", root_path

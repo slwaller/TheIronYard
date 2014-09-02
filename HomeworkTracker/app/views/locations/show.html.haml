@@ -1,0 +1,26 @@
+%center
+  %h1 Location
+  %strong
+    City
+  = @location.city
+  %br
+  %strong
+    Description
+  = @location.description
+  %br
+  %br
+  - if current_user.admin?
+    = button_to "Add your cohort to our group!", new_location_cohort_path(@location), class: "coh_link", method: :get
+  %br
+  %ul.cohort_list
+    %h1
+      Our Courses
+      %h2
+      - @location.cohorts.each do |cohort|
+        %li
+          %strong
+            = link_to cohort.course, location_cohort_path(@location, cohort)
+          |
+          = link_to "Edit", edit_location_cohort_path(@location, cohort)
+          |
+          = link_to "Delete", location_cohort_path(@location, cohort), method: :delete

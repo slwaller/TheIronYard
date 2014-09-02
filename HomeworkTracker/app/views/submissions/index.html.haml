@@ -1,0 +1,14 @@
+%center
+  %h1.assignments Submissions
+  = button_to "Back to Assignment", assignments_path, method: :get, class: "addassignment"
+  %br
+    - @assignment.submissions.each do |submission|
+      %li
+        %strong
+          = link_to submission.name, assignment_submission_path(@assignment, submission)
+          / = submission.link
+          |
+          = link_to "Edit", edit_assignment_submission_path(@assignment, submission)
+          |
+          = link_to "Delete", assignment_submission_path(@assignment, submission), method: :delete
+  = button_to "Home", root_path, method: :get

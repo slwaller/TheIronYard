@@ -1,0 +1,30 @@
+%br
+.jumbotron
+  .container
+    %h1.title PostHut
+    %p.title PostHut allows students to send their homework to the database to be looked at by other students and graded and evaluated by teachers. Students and teachers will also be able to communicate back and forth via comment stream!
+    %p
+      .col-md-6
+        %a.btn.btn-primary.btn-lg{:href => new_user_registration_path(role: :teacher), :role => "button"} Teachers »
+      .col-md-6
+        %a.btn.btn-primary.btn-lg{:href => new_user_registration_path(role: :student), :role => "button"} Students »
+.container
+  .row
+    .col-md-3 
+      %h2 GitHub
+      %p GitHub is a Git repository web-based hosting service which offers all of the distributed revision control and source code management (SCM) functionality of Git as well as adding many of its own features.
+      %p
+        %br
+          %a.btn.btn-default{:href => "https://www.github.com", :role => "button"} View details »
+    .col-md-3
+      %h2 Heroku
+      %p Heroku is a cloud application platform – a new way of building and deploying web apps. Our service lets app developers spend their time on their application code, not managing servers, deployment, ongoing operations, or scaling.
+      %br
+      %p
+        %a.btn.btn-default{:href => "https://www.heroku.com", :role => "button"} View details »
+    .col-md-3
+      %h2 StudentHut
+      %p Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+      %br
+      %p
+        %a.btn.btn-default{:href => "#", :role => "button"} View details »
