@@ -51,7 +51,7 @@ class LocationsController < ApplicationController
   
   private
   def location_params
-    params.require(:location).permit(:city, :description, cohort_ids: [])
+    params.require(:location).permit(:city, :description)
   end
 
 end

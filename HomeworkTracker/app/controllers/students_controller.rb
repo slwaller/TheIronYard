@@ -65,8 +65,8 @@ class StudentsController < ApplicationController
   
   private
   
-  def submission_params
-    params.require(:dealership).permit(:name, :description)
+  def student_params
+    params.require(:student).permit(:first_name, :last_name)
   end
   
 end

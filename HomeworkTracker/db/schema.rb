@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140901205509) do
+ActiveRecord::Schema.define(version: 20140902175307) do
 
   create_table "assignments", force: true do |t|
     t.string   "name"
@@ -70,6 +70,11 @@ ActiveRecord::Schema.define(version: 20140901205509) do
     t.integer  "assignment_id"
     t.string   "links"
     t.string   "workflow_state"
+  end
+
+  create_table "sup_dudes", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
